@@ -8,6 +8,7 @@ Then I verify that the page displays search text box
 And the page displays Google Search button
 And the page displays Im Feeling Lucky button
 
+<<<<<<< HEAD
 Scenario: Search sth on Google Searchpage
 Given I send keywords  to search text box to search
 When I click Google logo
@@ -15,3 +16,12 @@ Then the page displays Search btn
 And I click Google Search button
 And the page displays Tumu tab
 And I quit the browser
+=======
+#Scenario: Search sth on Google Searchpage
+#Given I send keywords  to search text box to search
+#When I click Google logo
+#Then the page displays Search btn
+#And I click Google Search button
+#And the page displays Tumu tab
+#And I quit the browser
+>>>>>>> 3c3ca54 (SeleniumWithDocker)

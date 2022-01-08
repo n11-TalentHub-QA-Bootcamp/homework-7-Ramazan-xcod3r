@@ -2,11 +2,14 @@
 FROM kshivaprasad/java:1.8
 #Step 1 : Install the pre-requisite
 RUN apt-get update
+<<<<<<< HEAD
 #RUN apt-get install -y libatspi2.0-0 libasound2 libcups2  libatk1.0-0 libdrm2 libcairo2
 
 #RUN apt-get install -y libgconf2-4 libnss3-1d libxss1  libatk1.0-0 libdrm2 libcairo2
 #RUN  apt-get install -y libappindicator3-1 fonts-liberation libatk-bridge2.0-0
 #RUN apt-get install libcurl3
+=======
+>>>>>>> 3c3ca54 (SeleniumWithDocker)
 RUN apt-get install -y curl
 RUN apt-get install -y p7zip \
     p7zip-full \
@@ -14,6 +17,7 @@ RUN apt-get install -y p7zip \
     zip \
     unzip \
     bzip2
+<<<<<<< HEAD
 
 #Version numbers
 ARG FIREFOX_VERSION=78.0.2
@@ -32,17 +36,36 @@ RUN curl https://chromedriver.storage.googleapis.com/$CHROMDRIVER_VERSION/chrome
     && rm /tmp/chromedriver.zip
 RUN chmod +x /app/bin/chromedriver
 #Step 4 : Install firefox
+=======
+#Version numbers
+ARG FIREFOX_VERSION=88.0
+ARG FIREFOXDRIVER_VERSION=0.30.0
+
+RUN mkdir -p /app/bin
+
+#Step 2 : Install firefox
+>>>>>>> 3c3ca54 (SeleniumWithDocker)
 RUN wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
   && bunzip2 /tmp/firefox.tar.bz2 \
   && tar xvf /tmp/firefox.tar \
   && mv /firefox /opt/firefox-$FIREFOX_VERSION \
   && ln -s /opt/firefox-$FIREFOX_VERSION/firefox /usr/bin/firefox
+<<<<<<< HEAD
 #Step 5: Install Geckodriver
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v$FIREFOXDRIVER_VERSION/geckodriver-v$FIREFOXDRIVER_VERSION-linux64.tar.gz
 RUN tar -xvzf geckodriver-v0.29.0-linux64.tar.gz
 RUN cp geckodriver /bin/geckodriver
 RUN chmod +x /bin/geckodriver
 #Step 6: Install Maven
+=======
+#Step 3: Install Geckodriver
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v$FIREFOXDRIVER_VERSION/geckodriver-v$FIREFOXDRIVER_VERSION-linux64.tar.gz
+RUN tar -xvzf geckodriver-v0.30.0-linux64.tar.gz
+RUN cp geckodriver /app/bin/geckodriver
+RUN chmod +x /app/bin/geckodriver
+
+#Step 4: Install Maven
+>>>>>>> 3c3ca54 (SeleniumWithDocker)
 # 1- Define Maven version
 ARG MAVEN_VERSION=3.6.3
 # 2- Define a constant with the working directory
@@ -69,10 +92,21 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
+<<<<<<< HEAD
 # 6- Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 #Step 7: Copy our project
+=======
+RUN alias jobs='jobs -l'
+RUN apt purge firefox
+RUN apt install -y firefox
+
+# 6- Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
+ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+#Step 5: Copy our project
+>>>>>>> 3c3ca54 (SeleniumWithDocker)
 COPY . /app
 #Making our working directory as /app
 WORKDIR /app

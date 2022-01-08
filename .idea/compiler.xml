@@ -6,6 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
+=======
+        <module name="SeleniumDockerizedW" />
+>>>>>>> 3c3ca54 (SeleniumWithDocker)
         <module name="SeleniumDockerized" />
       </profile>
     </annotationProcessing>
